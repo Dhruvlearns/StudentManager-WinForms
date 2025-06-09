@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="courses">
+    <Key>
+      <PropertyRef Name="Courseid" />
+    </Key>
+    <Property Name="Courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Coursename" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Student_information">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="nchar" MaxLength="10" />
+    <Property Name="Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Courseid" Type="int" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EnrollmentNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Student_information_Student_information">
+    <End Role="courses" Type="Self.courses" Multiplicity="1" />
+    <End Role="Student_information" Type="Self.Student_information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="courses">
+        <PropertyRef Name="Courseid" />
+      </Principal>
+      <Dependent Role="Student_information">
+        <PropertyRef Name="Courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentModelStoreContainer">
+    <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_information" EntityType="Self.Student_information" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Student_information_Student_information" Association="Self.FK_Student_information_Student_information">
+      <End Role="courses" EntitySet="courses" />
+      <End Role="Student_information" EntitySet="Student_information" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

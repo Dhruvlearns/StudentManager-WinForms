@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Student_information">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EnrollmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Courseid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cours" Relationship="StudentModel.FK_Student_information_Student_information" FromRole="Student_information" ToRole="cours" />
+  </EntityType>
+  <EntityContainer Name="StudentEntities_new" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Student_information" EntityType="Self.Student_information" />
+    <EntitySet Name="courses" EntityType="StudentModel.cours" />
+    <AssociationSet Name="FK_Student_information_Student_information" Association="StudentModel.FK_Student_information_Student_information">
+      <End Role="cours" EntitySet="courses" />
+      <End Role="Student_information" EntitySet="Student_information" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="cours">
+    <Key>
+      <PropertyRef Name="Courseid" />
+    </Key>
+    <Property Name="Courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Coursename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Student_information" Relationship="StudentModel.FK_Student_information_Student_information" FromRole="cours" ToRole="Student_information" />
+  </EntityType>
+  <Association Name="FK_Student_information_Student_information">
+    <End Type="StudentModel.cours" Role="cours" Multiplicity="1" />
+    <End Type="StudentModel.Student_information" Role="Student_information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cours">
+        <PropertyRef Name="Courseid" />
+      </Principal>
+      <Dependent Role="Student_information">
+        <PropertyRef Name="Courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

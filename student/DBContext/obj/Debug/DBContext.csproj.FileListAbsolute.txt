@@ -1,0 +1,12 @@
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\DBContext.dll.config
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\DBContext.dll
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\DBContext.pdb
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\EntityFramework.dll
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\EntityFramework.xml
+C:\Users\DAgrawal\Desktop\student\DBContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\DAgrawal\Desktop\student\DBContext\obj\Debug\DBContext.csproj.AssemblyReference.cache
+C:\Users\DAgrawal\Desktop\student\DBContext\obj\Debug\DBContext.csproj.CoreCompileInputs.cache
+C:\Users\DAgrawal\Desktop\student\DBContext\obj\Debug\DBContext.csproj.Up2Date
+C:\Users\DAgrawal\Desktop\student\DBContext\obj\Debug\DBContext.dll
+C:\Users\DAgrawal\Desktop\student\DBContext\obj\Debug\DBContext.pdb
